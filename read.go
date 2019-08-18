@@ -16,7 +16,7 @@ func checkErr(e error) {
 }
 
 func readWords(){
-    dat, err := ioutil.ReadFile("spell-check-resurse/words.txt")
+    dat, err := ioutil.ReadFile("words.txt")
     checkErr(err)
 
     spliter := regexp.MustCompile(`\n`)
