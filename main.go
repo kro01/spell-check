@@ -23,6 +23,7 @@ func main(){
     //showBild()
    
     
+    
     reader := bufio.NewReader(os.Stdin)
   	fmt.Println("Simple Spell Check")
  	fmt.Println("---------------------")
