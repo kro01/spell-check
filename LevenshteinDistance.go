@@ -1,8 +1,6 @@
 package main
 
-import (
-    "fmt"
-)
+//import "fmt"
 
 func MinOf(vars ...int) int {
     min := vars[0]
@@ -16,14 +14,20 @@ func MinOf(vars ...int) int {
     return min
 }
 
-func dist(s string,t string) int{
-	if(len(s) == 0){
+func dist(sa string,ta string) int{
+
+//fmt.Printf("\n%s %s",sa,ta)
+	s := []rune(sa)
+	t := []rune(ta)
+
+	if(len(s) == 1 || len(s) == 0){
 		return len(t)
 	}
-	if(len(t) == 0){
+	if(len(t) == 1 || len(t) == 0){
 		return len(s)
 	}
-	var a[20][20] int
+
+	var a[30][30] int
 	for i := 1; i < len(s)+1; i++ {
 		a[i][0] = i
 	}
@@ -47,12 +51,6 @@ func dist(s string,t string) int{
 		}
 		fmt.Println()
 	}*/
+	//fmt.Printf("\n %d %d",len(s),len(t))
 	return a[len(s)-1][len(t)-1]
-
-}
-
-func main() {
-	//a := dist("GAMBOL","GUMBO")
-	//a := dist("Zeil","trials")
-	fmt.Println(a);
 }
