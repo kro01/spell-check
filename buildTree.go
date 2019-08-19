@@ -15,7 +15,7 @@ func bild() {
     root.word = words[0]
     d := 0 
     var( 
-        tmp *Node
+        tmp ,tmp2 *Node
     )
 
     for i := range words{
@@ -26,26 +26,26 @@ func bild() {
         tmp = new(Node)
         (*tmp).word = words[i]
 
-        //bfs
-        wait := make([]*Node, 0)
-        wait = append(wait, &root)
+        //no bfs
+        //wait := make([]*Node, 0)
+        //wait = append(wait, &root)
         d = dist(root.word, (*tmp).word)
         if d == 0{
             //fmt.Printf("problem %s  %d",words[i],i)
         }
-        var tmp2 *Node
-        p := 0
+        tmp2 = &root
+        //p := 0
         for ;;{
-            if len(wait) == 0 {
-                fmt.Println("problem")
-            }
-            tmp2 = wait[0]
+            //if len(wait) == 0 {
+            //    fmt.Println("problem")
+            //}
+            //tmp2 = wait[0]
                 // Discard top element
-            wait = wait[1:]
+            //wait = wait[1:]
                 // Is empty ?
                 //fmt.Println(x)
             //fmt.Printf("\n  %d   %s",p,(*tmp2).word)
-            p++
+            //p++
             
 
             d = dist(((*tmp).word),((*tmp2).word))
@@ -55,11 +55,12 @@ func bild() {
                 //fmt.Printf("\n %d %s %s",d,(*((*tmp2).child[d])).word,(*tmp2).word)
                 break
             } else{
-                for j := range((*tmp2).child){
-                    if( (*tmp2).child[j] != nil){
-                        wait = append(wait,((*tmp2).child[j]))
-                    }
-                }
+                //for j := range((*tmp2).child){
+                    //if( (*tmp2).child[j] != nil){
+                    //    wait = append(wait,((*tmp2).child[j]))
+                    //}
+                //}
+                tmp2 = ((*tmp2).child)[d]
             }  
         } 
     }
