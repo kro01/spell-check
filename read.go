@@ -27,7 +27,7 @@ func readWords(){
     for i:= range dat2{
         tmp := line.Split(dat2[i],5)
         //fmt.Println(tmp[1])
-        words[i] = tmp[1]
+        words[i] = strings.ToLower(tmp[1])
     }
 }
 
@@ -75,40 +75,3 @@ func show(){
         fmt.Printf("%s,",words[i])
     }
 }
-
-
-
-
-
-    /*b := []byte(" ")
-    //fmt.Println(b[0])
-    c := 0
-    for i:= range words{
-        for j:= range words[i]{
-            if(words[i][j] == b[0]){
-                fmt.Println(words[i])
-                c++
-                break
-            }
-        }
-    }
-    fmt.Println(c)
-    max := 0
-    w := ""
-    j := 0
-    for i:= range words{
-        if(len(words[i]) > max){
-            max = len(words[i])
-            w = words[i]
-            j = i
-        }
-    }
-    a := []rune(words[j])
-    //a = []rune("asdasd")
-    for i:=0; i < len(a); i++{
-        fmt.Printf(" %c ", a[i])
-    } 
-    fmt.Println(words[j][0])
-    fmt.Println(max)
-    fmt.Println("bigest word is")
-    fmt.Println(w) */

@@ -9,8 +9,8 @@ type Node struct{
 
 var root Node
 
-
-func bild() {
+//build BK-tree from list of words
+func build() {
 
     root.word = words[0]
     d := 0 
@@ -19,54 +19,35 @@ func bild() {
     )
 
     for i := range words{
-        //fmt.Printf("\n %s",words[i])
         if i == 0 {continue}
         if words[i] == "" {continue}
         
         tmp = new(Node)
         (*tmp).word = words[i]
 
-        //no bfs
-        //wait := make([]*Node, 0)
-        //wait = append(wait, &root)
         d = dist(root.word, (*tmp).word)
         if d == 0{
             //fmt.Printf("problem %s  %d",words[i],i)
         }
         tmp2 = &root
-        //p := 0
-        for ;;{
-            //if len(wait) == 0 {
-            //    fmt.Println("problem")
-            //}
-            //tmp2 = wait[0]
-                // Discard top element
-            //wait = wait[1:]
-                // Is empty ?
-                //fmt.Println(x)
-            //fmt.Printf("\n  %d   %s",p,(*tmp2).word)
-            //p++
-            
 
+        for ;;{
+        
             d = dist(((*tmp).word),((*tmp2).word))
 
             if ((*tmp2).child)[d] == nil {
                 ((*tmp2).child)[d] = tmp
-                //fmt.Printf("\n %d %s %s",d,(*((*tmp2).child[d])).word,(*tmp2).word)
                 break
             } else{
-                //for j := range((*tmp2).child){
-                    //if( (*tmp2).child[j] != nil){
-                    //    wait = append(wait,((*tmp2).child[j]))
-                    //}
-                //}
                 tmp2 = ((*tmp2).child)[d]
             }  
         } 
     }
 }
 
-func showBild(){
+
+// show builded BK-tree
+func showBuild(){
     //fmt.Println(root.word)
     wait := make([]*Node,0)
     wait = append(wait,&root)

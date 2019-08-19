@@ -16,7 +16,6 @@ func MinOf(vars ...int) int {
 
 func dist(sa string,ta string) int{
 
-//fmt.Printf("\n%s %s",sa,ta)
 	s := []rune(sa)
 	t := []rune(ta)
 

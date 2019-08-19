@@ -8,6 +8,7 @@ import (
   "strings"
 )
 
+// tolerance limit 
 var tol int // tolerance limit 
 
 func main(){
@@ -16,14 +17,9 @@ func main(){
 	readWords()
     replace()
     countDuble()
-    //show()
     delDuble()
-    //show()
-    bild()
-    //showBild()
-   
-    
-    
+    build()
+
     reader := bufio.NewReader(os.Stdin)
   	fmt.Println("Simple Spell Check")
  	fmt.Println("---------------------")
