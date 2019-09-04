@@ -3,18 +3,19 @@ package main
 import "testing"
 
 func TestDist(t *testing.T) {
-    total := dist("GAMBOL","GUMBO")
-    if total != 2 {
-       t.Errorf("Levenshtein distance was incorrect, got: %d, want: %d.", total, 2)
+  
+  var tests = []struct{
+    word1 string;word2 string;result int
+  }{
+    {word1:"GAMBOL",word2:"GUMBO",result:2},
+    {word1:"zeil",word2:"trials",result:4},
+    {word1:"ала",word2:"алаб",result:1},
+  }
+
+  for _, test := range tests {
+    total := dist(test.word1,test.word2)
+    if total != test.result {
+      t.Errorf("Levenshtein distance was incorrect, got: %d, want: %d.", total, test.result)
     }
-    //"Zeil","trials" 4
-     total = dist("zeil","trials")
-    if total != 4 {
-       t.Errorf("Levenshtein distance was incorrect, got: %d, want: %d.", total, 4)
-    }
-    //"ала","алаб"
-     total = dist("ала","алаб")
-    if total != 1 {
-       t.Errorf("Levenshtein distance was incorrect, got: %d, want: %d.", total, 1)
-    }
+  }
 }
