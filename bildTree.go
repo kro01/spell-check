@@ -1,16 +1,21 @@
+/*
+bildTree.go bild BK-tree from array words.
+*/
 package main
 
 import "fmt"
+
 
 type Node struct{
     word string
     child [15]*Node    
 }
 
+//the root of the tree
 var root Node
 
-//build BK-tree from list of words
-func build() {
+//bild BK-tree from array words.
+func bild() {
 
     root.word = words[0]
     d := 0 
@@ -47,8 +52,8 @@ func build() {
 
 
 // show builded BK-tree
-func showBuild(){
-    //fmt.Println(root.word)
+func showBild(){
+    fmt.Println(root.word)
     wait := make([]*Node,0)
     wait = append(wait,&root)
     var tmp *Node
@@ -57,7 +62,7 @@ func showBuild(){
         p++
         tmp = wait[0]
         wait = wait[1:]
-        //fmt.Printf("\n %d %s",p,(*tmp).word)
+        fmt.Printf("\n %d %s",p,(*tmp).word)
         if (*tmp).word == ""{
             fmt.Println(p)
         }
@@ -67,12 +72,4 @@ func showBuild(){
             }
         }
     }
-    /*
-    for i := range root.child{
-        fmt.Printf("\n %d",i)
-        //fmt.Println(root.child[i])
-        if root.child[i] != nil{
-            fmt.Printf(" %d  %s",i,(*(root.child[i])).word)
-        }
-    }*/
 }

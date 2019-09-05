@@ -1,3 +1,8 @@
+/*
+check.go implement function checkSpell(). 
+It get word and return evry word in bildet tree on Levens distance 2 or small from it.
+Distance 2 is callet tolerance limit (tol) and can be change in main.go
+*/
 package main
 
 import "strings"

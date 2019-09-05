@@ -1,3 +1,7 @@
+/*
+This file read 1000 words from words.txt and put in array words
+It do it by callyng function readBG.
+*/
 package main
 
 import (
@@ -9,12 +13,20 @@ import (
 	
 var words []string
 
+func readBG(){
+    readWords()
+    replace()
+    countDuble()
+    delDuble()
+}
+
 func checkErr(e error) {
     if e != nil {
         panic(e)
     }
 }
 
+//read words from  words.txt and take off not used words from the file
 func readWords(){
     dat, err := ioutil.ReadFile("words.txt")
     checkErr(err)
@@ -31,14 +43,16 @@ func readWords(){
     }
 }
 
+//delete emty space from the end of the word
 func replace(){
     re := regexp.MustCompile(` *$`)
     for i := range words{
         words[i] = re.ReplaceAllString(words[i],"")
-        words[i] = strings.ToLower(words[i])
+        //words[i] = strings.ToLower(words[i])
     }
 }
 
+//countDuble() replaces repeated words with an empty string
 func countDuble(){
     var dub map[string]int
     dub = make(map[string]int)
@@ -52,6 +66,7 @@ func countDuble(){
     }
 }
 
+//delDuble() change takeoff emty strings 
 func delDuble(){
     i := 0
     for j := range words{
@@ -69,6 +84,7 @@ func delDuble(){
     //fmt.Printf("\n %s  %s %s \n",words[912],words[913],words[910])
 }
 
+//show() display words on the screan
 func show(){
     fmt.Printf("\n\n")
     for i := range words{

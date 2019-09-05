@@ -1,3 +1,8 @@
+/*
+In LevenshteinDistance.go is function dist() whitch callculate Levenshtein Distance
+of two words. Levenshtein Distance is defined like minimal number of operation neded to change one word to ather.
+Operation can be change one leter with other delete leter and add leter.
+*/
 package main
 
 //import "fmt"
