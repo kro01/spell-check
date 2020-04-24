@@ -11,11 +11,11 @@ import (
 var tol int 
 
 func main(){
-	
-	tol = 2
-	//readBG()
 
-	readEN()
+	tol = 2
+	readBG()
+
+	//readEN()
 
     bild()
 

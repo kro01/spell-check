@@ -9,12 +9,14 @@ import (
     "io/ioutil"
     "regexp"
     "strings"
+    "runtime"
 )
 	
 var words []string
 
 func readBG(){
-    readWords()
+    //openFile()
+    readWords(openFile())
     replace()
     countDuble()
     delDuble()
@@ -26,10 +28,24 @@ func checkErr(e error) {
     }
 }
 
-//read words from  words.txt and take off not used words from the file
-func readWords(){
-    dat, err := ioutil.ReadFile("words.txt")
+//open file words.txt from the folder of sourse code
+func openFile() string{
+    _, filePathe, _, _ := runtime.Caller(0)
+    //fmt.Println(filePathe)
+    re := regexp.MustCompile(`/[^/]+\.go\z`)
+    filePathe = string(re.ReplaceAll([]byte(filePathe), []byte("/words.txt")))
+    //fmt.Println(filePathe)
+    re = regexp.MustCompile(`/`)
+    filePathe = string(re.ReplaceAll([]byte(filePathe), []byte("\\")))
+    code, err := ioutil.ReadFile(filePathe)
     checkErr(err)
+    //fmt.Println(string(code))
+    return string(code)
+}
+//take off not used words from the file words.txt
+func readWords(dat string){
+    //dat, err := ioutil.ReadFile("words.txt")
+    //checkErr(err)
 
     spliter := regexp.MustCompile(`\n`)
     dat2 := spliter.Split(string(dat), 996)
